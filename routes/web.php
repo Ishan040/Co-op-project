@@ -5,7 +5,7 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 
-
+// Adding some change to web.php to demonstrate the collbaration
 
 Route::get('/', function () {
     return view('home');
