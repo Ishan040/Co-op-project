@@ -21,7 +21,6 @@ Route::get('create', function () {
 
 Route::get('/contacts/create', [ContactController::class, 'create']);
 
-Route::get('/contacts/create', 'ContactController@create');
 Route::post('/contacts', 'ContactController@store');
 
 
