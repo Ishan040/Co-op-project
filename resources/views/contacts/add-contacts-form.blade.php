@@ -11,37 +11,43 @@
 
     <form method="post" action="/contacts" class="mt-6 space-y-6">
         @csrf
-        @method('put')
+        @method('post')
 
         <div>
-            <x-input-label for="current_password" :value="__('Current Password')" />
-            <x-text-input id="current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+            <x-input-label for="name" value="Name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="password" :value="__('New Password')" />
-            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+            <x-input-label for="email" value="Email" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" autocomplete="email" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-            <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
+            <x-input-label for="contact" value="Contact" />
+            <x-text-input id="contact" name="contact" type="text" class="mt-1 block w-full" autocomplete="contact" />
+            <x-input-error :messages="$errors->get('contact')" class="mt-2" />
+        </div>
+
+        <div>
+            <x-input-label for="address" value="Address" />
+            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" autocomplete="address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>Add New Contact</x-primary-button>
 
-            @if (session('status') === 'password-updated')
+            @if (session('status') === 'contact-added')
                 <p
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                >Contact Added.</p>
             @endif
         </div>
     </form>
