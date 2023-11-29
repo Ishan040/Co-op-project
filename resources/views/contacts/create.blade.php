@@ -1,16 +1,19 @@
-<form method="post" action="/contacts">
-    @csrf
-    <label for="name">Name</label>
-    <input type="text" name="name" required>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            Add Contacts
+        </h2>
+    </x-slot>
 
-    <label for="Email">Email</label>
-    <input type="email" name="email" required>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('contacts.add-contacts-form')
+                </div>
+            <div>
+        </div>
+    </div>
 
-    <label for="Contact">Contact</label>
-    <input type="text" name="Contact" required>
-    
-    <label for="Address">Address</label>
-    <input type="text" name="address" required>
+</x-app-layout>
 
-    <button type="submit">Add Contact</button>
-</form>
