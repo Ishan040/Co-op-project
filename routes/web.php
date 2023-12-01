@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 // Adding some change to web.php to demonstrate the collbaration
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::get('/', function () {
     return view('home');
 });
@@ -21,7 +25,7 @@ Route::get('create', function () {
 
 Route::get('/contacts/create', [ContactController::class, 'create']);
 
-Route::post('/contacts', 'ContactController@store');
+Route::post('/contacts', [ContactController::class, 'store']);
 
 
 Route::middleware('auth')->group(function () {
