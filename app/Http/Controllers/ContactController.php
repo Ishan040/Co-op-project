@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function create()
+    public function index()
     {
-        return view('contacts/create');
+        $contacts = Contact::all();
+        return view('contacts.contacts', compact('contacts'));
     }
 
     public function store(Request $request)
@@ -21,7 +22,7 @@ class ContactController extends Controller
             'address' => 'required|string'
         ]);
 
-        $contact = Contact::create([
+        $contacts = Contact::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'contact' => $request->input('contact'),
