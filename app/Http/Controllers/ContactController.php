@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function create()
     {
-        $contacts = Contact::all();
-        return view('contacts.contacts', compact('contacts'));
+        return view('contacts/create');
     }
 
     public function store(Request $request)
@@ -18,7 +17,7 @@ class ContactController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:contacts',
-            'contact' => 'required|string|unique:contact',
+            'contact' => 'required|string|unique:contacts',
             'address' => 'required|string'
         ]);
 
@@ -29,6 +28,12 @@ class ContactController extends Controller
             'address' => $request->input('address')
         ]);
 
-        return redirect('/contacts')->with('success', 'Contact added successfully!');
+        return redirect('/contacts')->with('success', '.');
+    }
+
+    public function showContacts()
+    {
+        $contacts = Contact::all();
+        return view('contacts.contacts', ['contacts' => $contacts]);
     }
 }
