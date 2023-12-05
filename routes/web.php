@@ -23,11 +23,11 @@ Route::get('create', function () {
     return view('contacts/create');
 });
 
-Route::get('contacts', [ContactController::class, 'index']);
-
 Route::get('/contacts/create', [ContactController::class, 'create']);
 
 Route::post('/contacts', [ContactController::class, 'store']);
+
+Route::get('/contacts', [ContactController::class, 'showContacts']);
 
 
 Route::middleware('auth')->group(function () {
