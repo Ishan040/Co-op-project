@@ -21,13 +21,13 @@
         @if($contacts->count() > 0)
             @foreach($contacts as $contact)
 
-            <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;">
+            <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <p>Name: {{ $contact->name }}</p>
-                        <p>Email: {{ $contact->email }}</p>
-                        <p>Contact: {{ $contact->contact }}</p>
-                        <p>Address: {{ $contact->address }}</p>
+                        <strong>Name: </strong>{{ $contact->name }}<br>
+                        <strong>Email: </strong>{{ $contact->email }}<br>
+                        <strong>Contact: </strong>{{ $contact->contact }}<br>
+                        <strong>Address: </strong>{{ $contact->address }}<br>
                     </div>
                 </div>
             </div>
