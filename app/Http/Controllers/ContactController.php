@@ -20,8 +20,10 @@ class ContactController extends Controller
             'contact' => 'required|string|unique:contacts',
             'address' => 'required|string'
         ]);
+        
+        $user = $request->user();
 
-        $contacts = Contact::create([
+        $contacts = auth()->user()->contacts()->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'contact' => $request->input('contact'),
@@ -33,7 +35,7 @@ class ContactController extends Controller
 
     public function showContacts()
     {
-        $contacts = Contact::all();
+        $contacts = auth()->user()->contacts;
         return view('contacts.contacts', ['contacts' => $contacts]);
     }
 }
