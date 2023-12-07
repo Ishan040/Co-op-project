@@ -28,6 +28,7 @@
                         <strong>Email: </strong>{{ $contact->email }}<br>
                         <strong>Contact: </strong>{{ $contact->contact }}<br>
                         <strong>Address: </strong>{{ $contact->address }}<br>
+                        <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-primary">Edit Contact</a>
                     </div>
                 </div>
             </div>

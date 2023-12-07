@@ -31,11 +31,22 @@ class ContactController extends Controller
         ]);
 
         return redirect('/contacts')->with('success', '.');
+
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+
+        return redirect('/contacts')->with('success', 'Contact updated successfully');
     }
 
     public function showContacts()
     {
         $contacts = auth()->user()->contacts;
         return view('contacts.contacts', ['contacts' => $contacts]);
+    }
+
+    public function edit($id)
+    {
+        $contact = Contact::findOrFail($id);
+        return view('contacts.edit', compact('contact'));
     }
 }
