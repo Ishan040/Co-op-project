@@ -36,7 +36,7 @@
                         <x-input-error class="mt-2" :messages="$errors->get('address')" />
                     </div>
 <br>
-                    <button type="submit">Save Changes</button>
+                    <x-primary-button type="submit">Save Changes</x-primary-button>
                 </form>
             </div>
         </div>
