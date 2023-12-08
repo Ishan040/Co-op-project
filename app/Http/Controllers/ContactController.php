@@ -23,7 +23,7 @@ class ContactController extends Controller
         
         $user = $request->user();
 
-        $contacts = auth()->user()->contacts()->create([
+        $contact = auth()->user()->contacts()->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'contact' => $request->input('contact'),
@@ -31,13 +31,8 @@ class ContactController extends Controller
         ]);
 
         return redirect('/contacts')->with('success', '.');
-
-        $contact = Contact::findOrFail($id);
-        $contact->update($request->all());
-
-        return redirect('/contacts')->with('success', 'Contact updated successfully');
     }
-
+    
     public function showContacts()
     {
         $contacts = auth()->user()->contacts;
@@ -48,5 +43,20 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         return view('contacts.edit', compact('contact'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:contacts,email,' . $id,
+            'contact' => 'required|string|unique:contacts,contact,' . $id,
+            'address' => 'required|string',
+        ]);
+
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+
+        return redirect('/contacts')->with('success', 'Contact updated successfully');
     }
 }

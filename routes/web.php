@@ -29,9 +29,9 @@ Route::post('/contacts', [ContactController::class, 'store']);
 
 Route::get('/contacts', [ContactController::class, 'showContacts']);
 
-Route::get('/contacts/{id}/edit', 'ContactController@edit')->name('contacts.edit');
+Route::get('/contacts/{id}/edit', [ContactController::class, 'edit' ])->name('contacts.edit');
 
-Route::patch('/contacts/{id}', 'ContactController@update')->name('contacts.update');
+Route::patch('/contacts/{id}', [ContactController::class, 'update' ])->name('contacts.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
