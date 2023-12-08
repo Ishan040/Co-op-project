@@ -10,9 +10,20 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-        <script>
-            alert("Contact added successfully!");
-        </script>
+
+        @php
+            $action = session('action');
+        @endphp
+
+        @if($action === 'add')
+            <script>
+                alert("Contact added successfully!");
+            </script>
+        @elseif($action === 'update')
+            <script>
+                alert("Contact updated successfully!");
+            </script>
+        @endif
     @endif
 
     <div class="py-12">

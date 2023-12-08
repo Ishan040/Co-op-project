@@ -30,7 +30,7 @@ class ContactController extends Controller
             'address' => $request->input('address')
         ]);
 
-        return redirect('/contacts')->with('success', '.');
+        return redirect('/contacts')->with(['success' => 'Contact added successfully!', 'action' => 'add']);
     }
     
     public function showContacts()
@@ -57,6 +57,6 @@ class ContactController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->update($request->all());
 
-        return redirect('/contacts')->with('success', 'Contact updated successfully');
+        return redirect('/contacts')->with(['success' => '.', 'action' => 'update']);
     }
 }
