@@ -59,4 +59,12 @@ class ContactController extends Controller
 
         return redirect('/contacts')->with(['success' => '.', 'action' => 'update']);
     }
+
+    public function destroy($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect('/contacts')->with('success', '.');
+    }
 }

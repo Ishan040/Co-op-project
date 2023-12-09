@@ -33,6 +33,8 @@ Route::get('/contacts/{id}/edit', [ContactController::class, 'edit' ])->name('co
 
 Route::patch('/contacts/{id}', [ContactController::class, 'update' ])->name('contacts.update');
 
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy' ])->name('contacts.destroy');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

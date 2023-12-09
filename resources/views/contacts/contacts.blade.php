@@ -39,7 +39,11 @@
                         <strong>Email: </strong>{{ $contact->email }}<br>
                         <strong>Contact: </strong>{{ $contact->contact }}<br>
                         <strong>Address: </strong>{{ $contact->address }}<br>
-                        <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-primary" style="position: absolute; top: 50%; transform: translateY(-50%); right: 20px; padding: 5px; border: 1px solid #ccc; border-radius: 5px">Edit Contact</a>
+                        <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-primary" style="position: absolute; top: 50%; transform: translateY(-50%); right: 200px; padding: 3px; border: 1px solid #ccc; border-radius: 5px">Edit Contact</a>
+                        <div class="max-w-xl">
+                            @include('contacts.delete-contact-form')
+                        </div>
+
                     </div>
                 </div>
             </div>
