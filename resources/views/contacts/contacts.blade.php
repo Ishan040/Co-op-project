@@ -41,7 +41,7 @@
                         <strong>Address: </strong>{{ $contact->address }}<br>
                         <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-primary" style="position: absolute; top: 50%; transform: translateY(-50%); right: 200px; padding: 3px; border: 1px solid #ccc; border-radius: 5px">Edit Contact</a>
                      <section class="space-y-6">   
-                        @include('contacts.delete-contact-form')
+                        @include('contacts.delete-contact-form', ['contact' => $contact])
                     </section>
                     </div>
                 </div>

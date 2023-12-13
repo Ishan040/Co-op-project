@@ -1,12 +1,15 @@
+@props(['contact' => null])
+
 <section class="space-y-6">
+
     <x-danger-button
         x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-contact-deletion')"
-        style="position: absolute; top: 49px; transform: translateY(50%); right: 30px; margin-bottom:"
+        x-on:click="$dispatch('open-modal', 'confirm-contact-deletion-{{ $contact->id }}')"
+        style="position: absolute; top: 49px; transform: translateY(50%); right: 30px;"
     >{{ __('Delete Contact') }}</x-danger-button>
 
-    <x-modal name="confirm-contact-deletion" :show="$errors->contactDeletion->isNotEmpty()" focusable>
-        <form method="post" id="delete-contact-form" class="p-6">
+    <x-modal name="confirm-contact-deletion-{{ $contact->id }}" :show="$errors->contactDeletion->isNotEmpty()" focusable>
+        <form method="post" action="{{ route('contacts.destroy', $contact->id) }}" class="p-6">
             @csrf
             @method('delete')
 
@@ -29,11 +32,13 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click.prevent="$dispatch('close-modal', 'confirm-contact-deletion');">
+
+                <x-secondary-button
+                x-ref="cancelButton" x-on:click="closeModal()" x-close-modal>
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-danger-button type="button" x-on:click="document.getElementById('delete-contact-form').submit()" class="ms-3">
+                <x-danger-button class="ms-3">
                     {{ __('Delete Contact') }}
                 </x-danger-button>
             </div>
