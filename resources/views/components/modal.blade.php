@@ -77,7 +77,7 @@ $maxWidth = [
     </div>
 
     <script>
-        window.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && show) {
                 show = false;
             }
