@@ -8,7 +8,7 @@
         style="position: absolute; top: 49px; transform: translateY(50%); right: 30px;"
     >{{ __('Delete Contact') }}</x-danger-button>
 
-    <x-modal name="confirm-contact-deletion-{{ $contact->id }}" :show="$errors->contactDeletion->isNotEmpty()" focusable>
+    <x-modal x-ref="confirmDeletionModal" name="confirm-contact-deletion-{{ $contact->id }}" :show="$errors->contactDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('contacts.destroy', $contact->id) }}" class="p-6">
             @csrf
             @method('delete')
@@ -33,8 +33,7 @@
 
             <div class="mt-6 flex justify-end">
 
-                <x-secondary-button
-                x-ref="cancelButton" x-on:click="closeModal()" x-close-modal>
+                <x-secondary-button x-ref="cancelButton" x-on:click="closeModal">
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
@@ -45,3 +44,18 @@
         </form>
     </x-modal>
 </section>
+
+<script>
+    function openModal() {
+        console.log('Opening modal');
+        Alpine.store('confirm-contact-deletion-{{ $contact->id }}').show = true;
+    }
+
+    function closeModal() {
+        console.log('Closing modal');
+        Alpine.store('confirm-contact-deletion-{{ $contact->id }}').show = false;
+    }
+
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+</script>
