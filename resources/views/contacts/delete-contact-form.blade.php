@@ -33,9 +33,9 @@
 
             <div class="mt-6 flex justify-end">
 
-                <x-secondary-button x-ref="cancelButton" x-on:click="closeModal">
+                <button href="contacts.contacts" style="border: 1px solid #ccc;">
                     {{ __('Cancel') }}
-                </x-secondary-button>
+                </button>
 
                 <x-danger-button class="ms-3">
                     {{ __('Delete Contact') }}
@@ -44,18 +44,3 @@
         </form>
     </x-modal>
 </section>
-
-<script>
-    function openModal() {
-        console.log('Opening modal');
-        Alpine.store('confirm-contact-deletion-{{ $contact->id }}').show = true;
-    }
-
-    function closeModal() {
-        console.log('Closing modal');
-        Alpine.store('confirm-contact-deletion-{{ $contact->id }}').show = false;
-    }
-
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-</script>
