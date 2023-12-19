@@ -58,13 +58,13 @@
 
     <br><br>
 
-        <a  href="contacts/create">
             <div style="margin:auto; width: 50%;" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div style="text-align:center;" class="p-6 text-gray-900 dark:text-gray-100">
-                   Click here to add a new contact.
+                    <a href="{{ url('contacts/create') }}" class="btn btn-primary text-gray-900 dark:text-gray-100">
+                        Click here to add a new contact.
+                    </a>
                 </div>
             </div>
-        </a>
         </div>
     </div>
 

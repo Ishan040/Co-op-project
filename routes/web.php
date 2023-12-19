@@ -23,6 +23,7 @@ Route::get('create', function () {
     return view('contacts/create');
 });
 
+
 Route::get('/contacts/create', [ContactController::class, 'create']);
 
 Route::post('/contacts', [ContactController::class, 'store']);

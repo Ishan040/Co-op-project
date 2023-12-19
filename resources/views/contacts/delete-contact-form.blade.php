@@ -33,9 +33,7 @@
 
             <div class="mt-6 flex justify-end">
 
-                <button href="contacts.contacts" style="border: 1px solid #ccc;">
-                    {{ __('Cancel') }}
-                </button>
+            <a href="{{ url('/contacts') }}" class="btn btn-primary" style="padding: 3px; border: 1px solid #ccc; border-radius: 5px">Cancel</a>
 
                 <x-danger-button class="ms-3">
                     {{ __('Delete Contact') }}
