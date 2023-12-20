@@ -33,9 +33,11 @@
 
         <div>
             <x-input-label for="address" value="Address" />
-            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" autocomplete="address" />
+            <x-text-input id="addressInput" name="address" type="text" class="mt-1 block w-full" autocomplete="address" />
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
+
+        <div id="autocomplete-suggestions" class="absolute z-10 mt-2 bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 rounded-md shadow-md overflow-hidden" style="display: none;"></div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>Add New Contact</x-primary-button>
@@ -52,3 +54,58 @@
         </div>
     </form>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const addressInput = document.getElementById("addressInput");
+        const suggestionsContainer = document.getElementById("autocomplete-suggestions");
+
+        addressInput.addEventListener("input", function () {
+            const query = this.value;
+
+            if (query.length > 2) {
+                fetch('https://api.geoapify.com/v1/geocode/autocomplete?apiKey=87e06a2aa94647c1afd81a6f457a28e1&q=${query}')
+                    .then(response => response.json())
+                    .then(data => {
+                        displaySuggestions(data.features);
+                    })
+                    .catch(error => console.error('Error fetching autocomplete suggestions:', error));
+            } else {
+                hideSuggestions();
+            }
+        });
+
+        function displaySuggestions(suggestions) {
+            suggestionsContainer.innerHTML = "";
+
+            if (suggestions.length > 0) {
+                suggestions,forEach(suggestions => {
+                    const suggestionItem = document.createElement("div");
+                    suggestionItem.className = "p-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600";
+                    suggestionItem.textContent = suggestion.properties.formatted;
+
+                    suggestionItem.addEventListener("click", function () {
+                        addressInput.value = suggestions.properties.formatted;
+                        hideSuggestions();
+                    });
+
+                    suggestionsContainer.appendChild(suggestionItem);
+                });
+
+                suggestionsContainer.style.display = "block";
+            } else {
+                hideSuggestions();
+            }
+        }
+
+        function hideSuggestions() {
+            suggestionsContainer.style.display = "none";
+        }
+
+        document.addEventListener("click", function (event) {
+            if (!event.target.closest("#autocomplete-suggestions") && !event.target.closest("#addressInput")) {
+                hideSuggestions();
+            }
+        });
+    });
+</script>
