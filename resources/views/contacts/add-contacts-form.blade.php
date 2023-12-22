@@ -1,5 +1,10 @@
 <style>
 
+    body {
+        min-height: 950px;
+        background-color: rgb(18, 24, 38);
+    }
+
     .autocomplete-items {
         position: absolute;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -7,7 +12,8 @@
         border-top: none;
         background-color: #fff;
         z-index: 99;
-        top: calc(100% + 2px);
+        top: auto;
+        bottom: 0;
         left: 0;
         right: 0;
     }
@@ -15,6 +21,11 @@
     .autocomplete-items div {
         padding: 10px;
         cursor: pointer;
+        color: white !important;
+    }
+
+    .autocomplete-items div * {
+        color: white;
     }
 
     .autocomplete-items div:hover {
@@ -24,6 +35,7 @@
     .autocomplete-items .autocomplete-active {
         background-color: rgba(0, 0, 0, 0.1);
     }
+
 
     .clear-button {
         color: rgba(0, 0, 0, 0.4);
@@ -85,7 +97,7 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        <div id="autocomplete-suggestions" class="absolute z-10 mt-2 bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 rounded-md shadow-md overflow-hidden" style="display: none;"></div>
+        <div id="autocomplete-suggestions" class="absolute z-10 mt-2 bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 rounded-md shadow-md overflow-hidden" style="display: none; color: white;"></div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>Add New Contact</x-primary-button>
