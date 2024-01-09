@@ -11,6 +11,10 @@
                 <div class="max-w-xl">
                     @include('profile.partials.update-profile-information-form')
                 </div>
+
+                <button id="generateQrCode" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">Generate QR Code</button>
+
+                <div id="qrCodeContainer" class="mt-4"></div>
             </div>
 
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
