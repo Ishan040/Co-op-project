@@ -87,7 +87,32 @@
 
         <div>
             <x-input-label for="contact" value="Contact" />
-            <x-text-input id="contact" name="contact" type="text" class="mt-1 block w-full" autocomplete="contact" />
+            <x-text-input id="contact" name="contact" type="tel" pattern="\(\d{3}\)-\d{3}-\d{4}" class="mt-1 block w-full" autocomplete="contact" />
+
+            <script>
+        document.getElementById('contact').addEventListener('input', function (e) {
+            let inputValue = e.target.value.replace(/\D/g, '');
+
+            if (e.inputType === 'deleteContentBackward') {
+                if (/[\-\)]/.test(e.target.value.slice(-1))) {
+                    inputValue = inputValue.slice(0, -1);
+                }
+            }
+
+            if (inputValue.length > 10) {
+                inputValue = inputValue.slice(0, 10);
+            }
+
+            if (inputValue.length >= 6) {
+                inputValue = '(' + inputValue.slice(0, 3) + ')-' + inputValue.slice(3, 6) + '-' + inputValue.slice(6);
+            } else if (inputValue.length >= 3) {
+                inputValue = '(' + inputValue.slice(0, 3) + ')-' + inputValue.slice(3);
+            }
+
+            e.target.value = inputValue;
+        });
+                    </script>
+
             <x-input-error :messages="$errors->get('contact')" class="mt-2" />
         </div>
 
