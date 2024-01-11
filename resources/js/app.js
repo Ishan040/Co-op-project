@@ -16,12 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
     generateQrCodeButton.addEventListener("click", function () {
             console.log("Button Clicked");
 
+
         const userProfile = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
             contact: document.getElementById("contact").value,
             address: document.getElementById("address").value,
         };
+
+        const qrData = JSON.stringify(userProfile);
+            localStorage.setItem('qrData', qrData);
+            console.log("Stored QR Data:", qrData);
 
         qrCodeContainer.innerHTML = '';
 
@@ -36,12 +41,24 @@ document.addEventListener("DOMContentLoaded", function () {
         qrCodeContainer.style.height = "200px";
         qrCodeContainer.style.border = "1px solid black";
         qrCodeContainer.style.background = "#ffffff";
-        profileForm.style.width = "50%";
+        profileForm.style.width = "75%";
 
         console.log("Button Element:", generateQrCodeButton);
         console.log("QR Code Container Element:", qrCodeContainer);
         console.log("QRious Instance:", qr);
         console.log("User Profile:", userProfile);
+
+        const storedQrData = localStorage.getItem('qrData');
+        console.log("Retrieved QR Data:", storedQrData);
+        if (storedQrData) {
+            const userProfile = JSON.parse(storedQrData);
+
+            const qr = new QRious({
+                element: qrCodeCanvas,
+                value: JSON.stringify(userProfile),
+                size: 200,
+            });
+        }
 
 
         qrCodeContainer.style.display = "block";

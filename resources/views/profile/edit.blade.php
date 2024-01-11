@@ -11,6 +11,8 @@
            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" id="profileForm" style="width: 100%;" >
                <div class="max-w-xl">
                 @include('profile.partials.update-profile-information-form')
+                <button id="generateQrCode" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">Generate QR Code</button>
+
                </div>
            </div>
 
@@ -21,11 +23,7 @@
            </div>
        </div>
 
-       <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-           <div class="max-w-xl flex justify-between items-center">
-               <button id="generateQrCode" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">Generate QR Code</button>
-           </div>
-       </div>
+       
 
        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
            <div class="max-w-xl">
