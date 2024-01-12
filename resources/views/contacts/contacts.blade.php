@@ -33,19 +33,32 @@
             @foreach($contacts as $contact)
 
             <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; position:relative;">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <strong>Name: </strong>{{ $contact->name }}<br>
-                        <strong>Email: </strong>{{ $contact->email }}<br>
-                        <strong>Contact: </strong>{{ $contact->contact }}<br>
-                        <strong>Address: </strong>{{ $contact->address }}<br>
-                        <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-primary" style="position: absolute; top: 50%; transform: translateY(-50%); right: 200px; padding: 3px; border: 1px solid #ccc; border-radius: 5px">Edit Contact</a>
-                     <section class="space-y-6">   
+            <div class="md:flex">
+                <div class="md:flex-shrink-0">
+                    <img class="h-48 w-full object-cover md:w-48" src="{{ asset('testing.jpg') }}" alt="man looking at items at a store">
+                </div>
+                    <div class="p-8">
+                        <div class="uppercase tracking-wide text-sm text-white font-semibold">{{ $contact->name }}</div>
+                        <p class="mt-2 text-gray-300">{{ $contact->email }}</p>
+                        <p class="mt-2 text-gray-300">{{ $contact->contact }}</p>
+                        <p class="mt-2 text-gray-300">{{ $contact->address }}</p>
+
+                        <x-danger-button
+                         x-data=""
+                         x-on:click="$dispatch('open-modal', 'confirm-contact-deletion-{{ $contact->id }}')"
+                         style="position: absolute; top: 49px; transform: translateY(50%); right: 30px;"
+                         >{{__('Delete Contact') }}</x-danger-button>
+
+                        <a href="{{ route('contacts.edit', $contact->id) }}">
+                        <x-primary-button class="absolute top-15 transform -translate-y-50 right-10">Edit Contact</x-primary-button>                        <section class="space-y-6">   
+                        </a>
+
+                        <section class="space-y-6">
                         @include('contacts.delete-contact-form', ['contact' => $contact])
-                    </section>
+                        </section>
                     </div>
                 </div>
-            </div>
+                </div>
             @endforeach
         @else
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
