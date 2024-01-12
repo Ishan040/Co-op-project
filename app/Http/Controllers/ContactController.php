@@ -42,6 +42,9 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
+
+        session(['last_viewed_contact' => $contact->id]);
+
         return view('contacts.edit', compact('contact'));
     }
 
