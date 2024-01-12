@@ -39,9 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         qrBox.style.display = "block";
         qrCodeContainer.style.width = "200px";
         qrCodeContainer.style.height = "200px";
-        qrCodeContainer.style.border = "1px solid black";
-        qrCodeContainer.style.background = "#ffffff";
-        profileForm.style.width = "75%";
+        profileForm.style.width = "100%";
 
         console.log("Button Element:", generateQrCodeButton);
         console.log("QR Code Container Element:", qrCodeContainer);
