@@ -11,19 +11,21 @@
            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" id="profileForm" style="width: 100%;" >
                <div class="max-w-xl">
                 @include('profile.partials.update-profile-information-form')
-                <button id="generateQrCode" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">Generate QR Code</button>
-
-               </div>
-           </div>
-
-           <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" id="qrBox" style="display: none;">
-               <div class="max-w-xl">
-                <canvas id="qrCodeContainer" class="mt-4"></canvas>
+                <x-primary-button id="generateQrCode" class="mt-4 px-4 py-2 bg-white text-black rounded-md">Generate QR Code</x-primary-button>
                </div>
            </div>
        </div>
 
-       
+       <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" id="qrBox" style="display: none;">
+            <div class="max-w-xl">
+                <div style="text-align: center;">
+                    <canvas id="qrCodeContainer" class="mt-4"></canvas>
+                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            {{ __("Share your contact details using this QR Code.") }}
+                        </p>
+                </div>
+            </div>
+        </div>
 
        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
            <div class="max-w-xl">
