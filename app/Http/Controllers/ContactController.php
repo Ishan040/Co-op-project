@@ -35,9 +35,14 @@ class ContactController extends Controller
     
     public function showContacts()
     {
+        if (auth()->check()) {
         $contacts = auth()->user()->contacts;
         return view('contacts.contacts', ['contacts' => $contacts]);
+    } else {
+
+        return redirect('/login');
     }
+}
 
     public function edit($id)
     {
