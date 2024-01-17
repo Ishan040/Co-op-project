@@ -32,25 +32,19 @@
         @if($contacts->count() > 0)
             @foreach($contacts as $contact)
 
-            <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; position:relative;">
+            <div class="bg-gray-700" style="margin-bottom: 20px; border-radius: 20px; position:relative;">
             <div class="md:flex">
                 <div class="md:flex-shrink-0">
-                    <img class="h-48 w-full object-cover md:w-48" src="{{ asset('testing.jpg') }}" alt="man looking at items at a store">
+                    <img class="h-48 w-full object-cover md:w-48" style="border-radius: 20px; margin-top: 18px; margin-left: 18px;" src="{{ asset('testing.jpg') }}" alt="man looking at items at a store">
                 </div>
                     <div class="p-8">
                         <div class="uppercase tracking-wide text-sm text-white font-semibold">{{ $contact->name }}</div>
                         <p class="mt-2 text-gray-300">{{ $contact->email }}</p>
                         <p class="mt-2 text-gray-300">{{ $contact->contact }}</p>
                         <p class="mt-2 text-gray-300">{{ $contact->address }}</p>
-
-                        <x-danger-button
-                         x-data=""
-                         x-on:click="$dispatch('open-modal', 'confirm-contact-deletion-{{ $contact->id }}')"
-                         style="position: absolute; top: 49px; transform: translateY(50%); right: 30px;"
-                         >{{__('Delete Contact') }}</x-danger-button>
-
+<br>
                         <a href="{{ route('contacts.edit', $contact->id) }}">
-                        <x-primary-button class="absolute top-15 transform -translate-y-50 right-10">Edit Contact</x-primary-button>                        <section class="space-y-6">   
+                        <x-primary-button class="absolute transform -translate-y-50 right-100px">Edit Contact</x-primary-button>                        <section class="space-y-6">   
                         </a>
 
                         <section class="space-y-6">

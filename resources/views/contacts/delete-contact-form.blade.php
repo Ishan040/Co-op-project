@@ -5,7 +5,7 @@
     <x-danger-button
         x-data=""
         x-on:click="$dispatch('open-modal', 'confirm-contact-deletion-{{ $contact->id }}')"
-        style="position: absolute; top: 49px; transform: translateY(50%); right: 30px;"
+        style="position: absolute; top: 155.25px; transform: translateY(50%); right: 675px;"
     >{{ __('Delete Contact') }}</x-danger-button>
 
     <x-modal x-ref="confirmDeletionModal" name="confirm-contact-deletion-{{ $contact->id }}" :show="$errors->contactDeletion->isNotEmpty()" focusable>
@@ -21,9 +21,8 @@
                 {{ __('Once this contact is deleted, it will be permanently removed. Please confirm to proceed.') }}
             </p>
 
-            <div class="mt-6">
+            <div class="mt-6" style="color: white;">
                 <input type="hidden" name="contact_id" value="{{ $contact->id }}">
-
                 <p class="mt-2">{{ __('Contact Information')  }}:</p>
                 <strong>Name: </strong>{{ $contact->name }}<br>
                 <strong>Email: </strong>{{ $contact->email }}<br>
@@ -33,7 +32,7 @@
 
             <div class="mt-6 flex justify-end">
 
-            <a href="{{ url('/contacts') }}" class="btn btn-primary" style="padding: 3px; border: 1px solid #ccc; border-radius: 5px">Cancel</a>
+            <a href="{{ url('/contacts') }}" class="btn btn-primary" style="padding: 3px; border: 1px solid #ccc; border-radius: 5px; color: white;">Cancel</a>
 
                 <x-danger-button class="ms-3">
                     {{ __('Delete Contact') }}

@@ -7,6 +7,7 @@
 
    <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+
        <div class="flex justify-between items-center">
            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" id="profileForm" style="width: 100%;" >
                <div class="max-w-xl">
@@ -19,11 +20,11 @@
        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" id="qrBox" style="display: none;">
             <div class="max-w-xl">
                 <div style="text-align: center;">
-                    <canvas id="qrCodeContainer" class="mt-4"></canvas>
-                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    <canvas id="qrCodeContainer" class="mt-4"></canvas><br>
+                </div>
+                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400" style="text-align: left;">
                             {{ __("Share your contact details using this QR Code.") }}
                         </p>
-                </div>
             </div>
         </div>
 
