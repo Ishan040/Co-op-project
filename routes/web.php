@@ -14,7 +14,7 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
-
+981264
 Route::get('contacts', function () {
     return view('contacts/contacts');
 });
